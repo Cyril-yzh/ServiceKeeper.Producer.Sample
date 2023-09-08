@@ -12,7 +12,7 @@ namespace ServiceKeeper.Producer.Sample.Domain.DependencyInjection
         {
             services.AddSingleton(sp =>
             {
-                var scheduler = sp.GetRequiredService<ServiceTaskScheduler>();
+                var scheduler = sp.GetRequiredService<ServiceScheduler>();
                 var options = sp.GetRequiredService<IOptions<LocalSourceOptions>>().Value;
                 var saver = new SaveHelper();
                 return new TaskEntityDomainService(scheduler, options, saver);

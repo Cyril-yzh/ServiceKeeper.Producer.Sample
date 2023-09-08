@@ -9,11 +9,11 @@ namespace ServiceKeeper.Producer.Sample.Domain
     /// </summary>
     public class TaskEntityDomainService
     {
-        private readonly ServiceTaskScheduler scheduler;
+        private readonly ServiceScheduler scheduler;
         private readonly LocalSourceOptions options;
         private readonly SaveHelper saver;
         private readonly Dictionary<Guid, TaskEntity> currentTaskEntities = new();
-        public TaskEntityDomainService(ServiceTaskScheduler scheduler, LocalSourceOptions options, SaveHelper saver)
+        public TaskEntityDomainService(ServiceScheduler scheduler, LocalSourceOptions options, SaveHelper saver)
         {
             this.scheduler = scheduler;
             this.options = options;
@@ -45,7 +45,7 @@ namespace ServiceKeeper.Producer.Sample.Domain
             if (tempTaskEntities != null && tempTaskEntities.Count != 0) saver.Save(tempTaskEntities, options.TaskEntitiesSaveName);
             else tempTaskEntities = saver.Load<Dictionary<Guid, TaskEntity>>(options.TaskEntitiesSaveName);
 
-            if (tempTaskEntities == null || tempTaskEntities.Count == 0) { ServiceTaskScheduler.ClearTask(); return; }
+            if (tempTaskEntities == null || tempTaskEntities.Count == 0) { ServiceScheduler.ClearTask(); return; }
 
             if (currentTaskEntities.Count == 0 && tempTaskEntities.Count != 0)      //本地无配置,从接口获取并初始化
             {

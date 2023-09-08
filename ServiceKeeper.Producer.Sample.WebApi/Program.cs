@@ -13,7 +13,7 @@ namespace ServiceKeeper.Producer.Sample.WebApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            string url = "https://localhost:17777/";
+            string url = "http://192.168.23.4:17777/";
             builder.WebHost.UseUrls(url);
 
             builder.Services.AddControllers();
@@ -52,7 +52,6 @@ namespace ServiceKeeper.Producer.Sample.WebApi
                 options.MQExchangeName = "echangeEventBusDemo1";
                 options.MQUserName = "admin";
                 options.MQPassword = "Aa111111";
-                options.MQQueueName = "MessageQueue1";
                 options.ServiceDescription = "服务A";
             });
             builder.Services.Configure<ServiceKeeperUIOptions>(options =>
@@ -75,7 +74,7 @@ namespace ServiceKeeper.Producer.Sample.WebApi
             {
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins(url, "http://127.0.0.1:5500", "null").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+                    builder.WithOrigins(url, "http://127.0.0.1:5500", "http://localhost:5500", "http://192.168.23.4:5500", "null").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
                 });
             });
         }
@@ -83,9 +82,9 @@ namespace ServiceKeeper.Producer.Sample.WebApi
         public static void InitializeService(WebApplication app)
         {
             app.UseCors();
-            //app.UseProducerServiceKeeper();
-            //app.UseApplication();
-            //app.UseServiceKeeperUI();
+            app.UseProducerServiceKeeper();
+            app.UseApplication();
+            app.UseServiceKeeperUI();
 
             app.UseAuthorization();
             app.MapControllers();
