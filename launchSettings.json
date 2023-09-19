@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "servicekeeper.producer.sample.webapi": "StartDebugging"
+      }
+    }
+  }
+}

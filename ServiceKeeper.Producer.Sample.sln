@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceKeeper.Core", "..\Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceKeeper.UI", "..\ServiceKeeper.UI\ServiceKeeper.UI.csproj", "{D5D8E900-5660-42E6-B657-75F5C52EE8C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceKeeper.Producer.Sample.WebApi", "ServiceKeeper.Producer.Sample.WebApi\ServiceKeeper.Producer.Sample.WebApi.csproj", "{80CF1BE1-BF6E-450A-A307-563318841B38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceKeeper.Producer.Sample.WebApi", "ServiceKeeper.Producer.Sample.WebApi\ServiceKeeper.Producer.Sample.WebApi.csproj", "{80CF1BE1-BF6E-450A-A307-563318841B38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionSerializer", "..\ServiceKeeper.Common\ReflectionSerializer\ReflectionSerializer.csproj", "{DF048D39-B58E-4878-87AA-3365BBFA9E06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{80CF1BE1-BF6E-450A-A307-563318841B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80CF1BE1-BF6E-450A-A307-563318841B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80CF1BE1-BF6E-450A-A307-563318841B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF048D39-B58E-4878-87AA-3365BBFA9E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF048D39-B58E-4878-87AA-3365BBFA9E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF048D39-B58E-4878-87AA-3365BBFA9E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF048D39-B58E-4878-87AA-3365BBFA9E06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

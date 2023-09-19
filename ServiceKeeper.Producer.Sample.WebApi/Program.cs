@@ -13,7 +13,7 @@ namespace ServiceKeeper.Producer.Sample.WebApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            string url = "http://192.168.23.4:17777/";
+            string url = "http://192.168.23.3:17777/";
             builder.WebHost.UseUrls(url);
 
             builder.Services.AddControllers();

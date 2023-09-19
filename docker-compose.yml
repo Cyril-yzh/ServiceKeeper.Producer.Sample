@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  servicekeeper.producer.sample.webapi:
+    image: ${DOCKER_REGISTRY-}servicekeeperproducersamplewebapi
+    build:
+      context: .
+      dockerfile: ServiceKeeper.Producer.Sample.WebApi\Dockerfile

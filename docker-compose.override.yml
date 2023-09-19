@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  servicekeeper.producer.sample.webapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
