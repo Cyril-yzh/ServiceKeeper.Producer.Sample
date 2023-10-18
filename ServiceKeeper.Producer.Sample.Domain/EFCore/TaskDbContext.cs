@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ServiceKeeper.Core.Entity;
 using Pomelo.EntityFrameworkCore.MySql;
+using ServiceKeeper.Core.Model.Task;
 
 namespace ServiceKeeper.Producer.Sample.Domain.EFCore
 {
@@ -15,9 +15,9 @@ namespace ServiceKeeper.Producer.Sample.Domain.EFCore
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TaskEntity>()
-                .Property(e => e.Id)
-                .ValueGeneratedNever(); // 指定主键不是自增
+            //modelBuilder.Entity<TaskEntity>()
+            //    .Property(e => e.Id)//
+            //    .ValueGeneratedNever(); // 指定主键不是自增
         }
     }
 }

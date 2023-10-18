@@ -1,6 +1,6 @@
 ﻿using ServiceKeeper.Producer.Sample.Domain.EFCore;
 using ServiceKeeper.Core;
-using ServiceKeeper.Core.Entity;
+using ServiceKeeper.Core.Model.Task;
 
 namespace ServiceKeeper.Producer.Sample.Domain
 {
@@ -41,11 +41,11 @@ namespace ServiceKeeper.Producer.Sample.Domain
         public void GetTasks()
         {
             using var context = new TaskDbContext();
-            Dictionary<Guid, TaskEntity>? tempTaskEntities = context.TaskEntity.ToDictionary(config => config.Id);
+            Dictionary<Guid, TaskEntity>? tempTaskEntities = context.TaskEntity.ToDictionary(config => config.Detail.Id);
             if (tempTaskEntities != null && tempTaskEntities.Count != 0) saver.Save(tempTaskEntities, options.TaskEntitiesSaveName);
             else tempTaskEntities = saver.Load<Dictionary<Guid, TaskEntity>>(options.TaskEntitiesSaveName);
 
-            if (tempTaskEntities == null || tempTaskEntities.Count == 0) { ServiceScheduler.ClearTask(); return; }
+            if (tempTaskEntities == null || tempTaskEntities.Count == 0) { scheduler.ClearTask(); return; }
 
             if (currentTaskEntities.Count == 0 && tempTaskEntities.Count != 0)      //本地无配置,从接口获取并初始化
             {
@@ -62,7 +62,7 @@ namespace ServiceKeeper.Producer.Sample.Domain
                 {
                     if (!tempTaskEntities.ContainsKey(item.Key))                    //在当前使用配置中找到新配置中不存在的,触发事件并删除
                     {
-                        scheduler.DeleteTask(item.Value);
+                        scheduler.DeleteTask(item.Value,true);
                         //mediator.Publish(new TaskDeletedEvent(item.Value));
                         currentTaskEntities.Remove(item.Key);
                     }

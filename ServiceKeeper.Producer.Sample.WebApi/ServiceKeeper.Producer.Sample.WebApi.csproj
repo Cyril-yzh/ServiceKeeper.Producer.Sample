@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ServiceKeeper.Core\ServiceKeeper.Core.csproj" />
     <ProjectReference Include="..\..\ServiceKeeper.UI\ServiceKeeper.UI.csproj" />
-    <ProjectReference Include="..\ServiceKeeper.Producer.Sample.Domain\ServiceKeeper.Producer.Sample.Domain.csproj" />
   </ItemGroup>
 
 </Project>
